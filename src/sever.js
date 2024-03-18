@@ -17,12 +17,8 @@ app.use('/', webRoutes);
 
 
 // A simple SELECT query
-connection.query(
-    'select * from Users u',
-    function (err, results, fields) {
-        console.log(">>> Result ", results); // results contains rows returned by server
-    }
-);
+
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

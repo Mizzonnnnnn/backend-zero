@@ -1,8 +1,10 @@
+const { json } = require('express');
+const connection = require('../config/database');
+
 
 const getHomepage = (req, res) => {
-    // process data
-    // call model
-    res.send('Hello World! && nodemon')
+
+    return res.render('home.ejs')
 }
 
 const getABC = (req, res) => {
