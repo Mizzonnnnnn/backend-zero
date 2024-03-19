@@ -34,3 +34,37 @@
     background-color: #04AA6D;
     color: white;
 }
+
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+}
+
+legend {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+}
+
+
+
+.form-add-new {
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.input-group {
+    padding: 10px;
+}
+
+button {
+    margin-left: 10px;
+    cursor: pointer;
+}
