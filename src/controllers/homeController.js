@@ -26,7 +26,7 @@ const getHoitoan = (req, res) => {
     res.render('sample.ejs')
 }
 
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
     // console.log(">>> req.body: ", req.body)
 
     let email = req.body.email;
@@ -35,26 +35,28 @@ const postCreateUser = (req, res) => {
 
     // let {email, name, city} = req.body
     // console.log(">>> email: ", email, ", name: ", name, "city: ", city);
-    // res.send('create a new user')
 
 
-
-    connection.query(
+    let [results, , fields] = await connection.query(
         // ? truyền mảng mảng
         `INSERT INTO Users(email, name, city) 
         VALUES(?, ?, ?)`,
         [email, name, city],
-        function (err, results) {
-            console.log(results); // results contains rows returned by server
-            res.send('Create user success')
-        }
     );
+
+    console.log(">>> check results: ", results)
+
+    res.send("Create Users success")
 }
 
 
+const getCreatePage = (req, res) => {
+    res.render('create.ejs')
+}
 module.exports = {
     getHomepage,
     getABC,
     getHoitoan,
-    postCreateUser
+    postCreateUser,
+    getCreatePage
 }
