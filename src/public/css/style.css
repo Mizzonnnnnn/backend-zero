@@ -117,3 +117,7 @@ table {
 
     margin: 0 auto;
 }
+
+.d-non {
+    display: none;
+}

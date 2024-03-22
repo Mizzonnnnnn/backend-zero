@@ -1,6 +1,6 @@
 const { json } = require('express');
 const connection = require('../config/database');
-const { getAllUsers, getUserById } = require('../services/CRUDServices');
+const { getAllUsers, getUserById, updateUserById } = require('../services/CRUDServices');
 
 const getHomepage = async (req, res) => {
     let results = await getAllUsers();
@@ -18,14 +18,20 @@ const getHoitoan = (req, res) => {
 const postCreateUser = async (req, res) => {
     let { email, name, city } = req.body
 
-    let [results, , fields] = await connection.query(
-        `INSERT INTO Users(email, name, city) 
-        VALUES(?, ?, ?)`,
-        [email, name, city]
+    let [results, fields] = await connection.query(
+        `INSERT INTO Users(email, name, city) VALUES(?, ?, ?)`, [email, name, city]
     );
     res.send("Create Users success")
 }
 
+const postUpdateUser = async (req, res) => {
+    let { email, name, city } = req.body
+    let userId = req.body.userId;
+
+    await updateUserById(email, name, city, userId);
+    // res.send("Update Users success")
+    res.redirect('/')
+}
 
 const getCreatePage = (req, res) => {
     res.render('create.ejs')
@@ -38,11 +44,14 @@ const getUpdatePage = async (req, res) => {
 
     res.render('edit.ejs', { userEdit: user })
 }
+
+
 module.exports = {
     getHomepage,
     getABC,
     getHoitoan,
     postCreateUser,
     getCreatePage,
-    getUpdatePage
+    getUpdatePage,
+    postUpdateUser
 }
