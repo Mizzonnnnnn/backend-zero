@@ -18,6 +18,18 @@ configViewEngine(app);
 // khai bao route
 app.use('/', webRoutes);
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+
+
+
+(async () => {
+    // test connnection
+    try {
+        await connection();
+        app.listen(port, () => {
+            console.log(`Backend zero app listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log(">>>> error conect to DB: ", error)
+    }
+
+})()
