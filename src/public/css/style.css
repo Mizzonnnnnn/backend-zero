@@ -121,3 +121,7 @@ table {
 .d-non {
     display: none;
 }
+
+.a-center {
+    display: flex;
+}
