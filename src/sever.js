@@ -4,14 +4,19 @@ const configViewEngine = require('./config/viewEngine')
 const connection = require('./config/database')
 const webRoutes = require('./routes/web')
 const apiRoutes = require('./routes/api')
+const fileUpload = require('express-fileupload')
 const app = express()
 const port = process.env.PORT || 8888; // port => hardcode , uat ,prod
 const hostname = process.env.HOST_NAME;
-const fileUpload = require('express-fileupload');
 
+
+//config file update
+// default options
+app.use(fileUpload());
+
+// config req.body
 app.use(express.json()) // for json
 app.use(express.urlencoded({ extended: true })) // for form data
-
 
 // config template engine
 configViewEngine(app);
