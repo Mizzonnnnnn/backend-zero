@@ -89,5 +89,5 @@ module.exports = {
     putUpdateUserAPI,
     deleteUserAPI,
     postUploadSingleFileApi,
-    postUploadMultipleFilesAPI
+    postUploadMultipleFilesAPI,
 }
