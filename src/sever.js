@@ -8,8 +8,6 @@ const fileUpload = require('express-fileupload')
 const app = express()
 const port = process.env.PORT || 8888; // port => hardcode , uat ,prod
 const hostname = process.env.HOST_NAME;
-
-
 //config file update
 // default options
 app.use(fileUpload());

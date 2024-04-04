@@ -11,7 +11,14 @@ const customerSchema = new mongoose.Schema({
     email: String,
     image: String,
     description: String,
-}, { timestamps: true }
+}, {
+    timestamps: true,
+    statics: {
+        findByName(name) {
+            return this.find({ name: new RegExp(name, 'i') });
+        }
+    }
+}
 );
 
 // Override all methods
