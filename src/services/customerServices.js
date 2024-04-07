@@ -76,7 +76,7 @@ const deleteACustomerService = async (id) => {
 
 const deleteArrayCustomerService = async (arrids) => {
     try {
-        // let result = await Customer.deleteMany({ customersId: { $in: id } });
+        // let result = await Customer.deleteMany({ customersId: { $in: arrids } });
         let result = await Customer.delete({ _id: { $in: arrids } });
         return result;
     } catch (error) {
