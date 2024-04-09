@@ -14,7 +14,7 @@ const createCustomerService = async (customerData) => {
         })
         return result;
     } catch (error) {
-        console(error);
+        console.log(error);
         return null;
     }
 }
