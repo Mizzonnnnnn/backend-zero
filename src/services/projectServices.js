@@ -34,6 +34,15 @@ module.exports = {
             return a;
 
         }
+
+        if (data.type === "ADD-TASK") {
+            let myPoject = await Project.findById(data.projectId).exec();
+            for (let i = 0; i < data.taskArr.length; i++) {
+                myPoject.tasks.push(data.taskArr[i]);
+            }
+            let result = await myPoject.save();
+            return result;
+        }
         return null
     },
 
