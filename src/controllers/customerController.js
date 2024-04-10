@@ -6,8 +6,6 @@ const Joi = require('joi');
 module.exports = {
     postCreateCustomer: async (req, res) => {
         let { name, address, phone, email, description } = req.body;
-
-
         const schema = Joi.object({
             name: Joi.string()
                 .alphanum()
@@ -19,11 +17,13 @@ module.exports = {
             phone: Joi.string().pattern(new RegExp('^[0-9]{8,11}$')),
             email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
             description: Joi.string(),
-            language: Joi.string()
         })
+
         const { error } = schema.validate(req.body, { abortEarly: false })
         if (error) {
-            return error
+            return res.status(200).json({
+                msg: error
+            })
         } else {
             let imageUrl = "";
 
@@ -51,8 +51,6 @@ module.exports = {
                 data: customer
             })
         }
-
-
     },
     postCreateArrayCustomer: async (req, res) => {
 
