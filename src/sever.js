@@ -32,7 +32,7 @@ app.use('/v1/api/', apiRoutes);
     // test connnection
     try {
         // using mongoose
-        await connection();
+        // await connection();
 
         const url = process.env.DB_HOST_WITH_DRIVER;
         const client = new MongoClient(url);
